@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>gestion des réclamations de notes</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Add CSS for the popup -->
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #fff;
+    }
+
+    .popup-content {
+      height: 250px;
+      width: 200px;
+      display: none;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    .popup-icon {
+      font-size: 80px;
+      color: #dc3545; /* Red color for error */
+    }
+
+    .popup-button {
+      background: #007bff; /* Blue color for the button */
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .popup-button:hover {
+      background: #0056b3; /* Darker blue color on hover */
+    }
+  </style>
+</head>
+<body>
+   <!-- ======= Header ======= -->
+   <header id="header" class="header d-flex align-items-center">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <img class="logo1" src="assets/img/logo1.png" alt="FASEG">
+      </a>
+
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+      <nav id="navbar" class="navbar">
+        <ul>
+
+          <li><a href="index.html">Accueil</a></li>
+          <!-- <li><a href="process.html">Demarche</a></li> -->
+          <li class="dropdown"><a href=""><span>Démarches</span> <i
+            class="bi bi-chevron-down dropdown-indicator"></i></a>
+        <ul>
+          <li><a href="complaint_process.html">Réclamation de note</a></li>
+          <li><a href="transcritpt_process.html">Demande de Relevé de note</a></li>
+          <li><a href="certificate_process.html">Demande d'Attestation</a></li>
+          <li><a href="diploma_process.html">Demande de Diplôme</a></li>
+
+        </ul>
+      </li>
+
+          <li class="dropdown"><a href="#"><span>Services</span> <i
+                class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              <li><a href="complaint_index.html">Faire une Réclamation</a></li>
+
+              <li class="dropdown"><a href="#"><span>Demander un acte academique</span> <i
+                    class="bi bi-chevron-down dropdown-indicator"></i></a>
+                <ul>
+                  <li><a href="transcript_ridirect.html" >Relevé de note</a></li>
+                  <li><a href="certificat_redirect.html" >Attestation de succès</a></li>
+                  <li><a href="diploma_ridirect.html">Diplôme</a></li>
+
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li><a href="contact.html">A propos</a></li>
+          <li><a href="contact.html">Contact</a></li>
+
+          
+          
+          <li><a href="contact.html"></a></li>
+
+
+         <!-- <div class="header-buttons" id="auth_button">
+            <a href="login.html" class="login-button">Connexion</a>
+            <a href="register.html" class="register-button">Inscription</a>
+          </div>
+
+        </ul>
+      </nav>--><!-- .navbar -->
+
+      <!--<div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Veuillez vous connecter</p>
+            <button id="login-button">Login</button>
+        </div>-->
+    </div>
+
+    </div>
+  </header><!-- End Header -->
+  <div class="popup-content" id="popup">
+    <i class="bi bi-check-circle popup-icon" style="font-size: xx-large;">Oups😤</i>
+    <p style="color: #333; font-family: Arial, sans-serif; font-size: 20px;">
+      Veuillez vous connecter afin de pouvoir faire votre demande d'Attestation.</p>
+    <button class="popup-button" onclick="window.location.href='login.html'">OK</button>
+  </div>
+
+  <script>
+    window.onload = function () {
+      document.getElementById("popup").style.display = "block";
+    };
+  </script>
+</body>
+</html>

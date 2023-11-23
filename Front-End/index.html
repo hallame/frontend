@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>gestion des réclamations de notes</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.jpeg" rel="icon">
+  <link href="assets/img/apple-touch-icon.jpeg" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Roboto:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+    rel="stylesheet">
+
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+    <!-- Ajouter le style pour la boîte de pop-up -->
+    <style>
+      /* Style pour la boîte de pop-up */
+      .popup {
+        display: none;
+        position: fixed;
+        top: 0;
+        right: 100px;
+        width: 100px;
+        height: 100%;
+        /* background-color: rgba(255, 255, 255, 0.9); */
+        z-index: 9999;
+         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+      }
+  
+      .popup-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+  
+      .close-popup {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size:x-large;
+        cursor: pointer;
+      }
+  </style>
+
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header d-flex align-items-center">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <img class="logo1" src="assets/img/logo1.png" alt="FASEG">
+      </a>
+
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+      <nav id="navbar" class="navbar">
+        <ul>
+
+          <li><a href="index.html">Accueil</a></li>
+          <!-- <li><a href="process.html">Demarche</a></li> -->
+          <li class="dropdown"><a href=""><span>Démarches</span> <i
+            class="bi bi-chevron-down dropdown-indicator"></i></a>
+        <ul>
+          <li><a href="complaint_process.html">Réclamation de note</a></li>
+          <li><a href="transcritpt_process.html">Demande de Relevé de note</a></li>
+          <li><a href="certificate_process.html">Demande d'Attestation</a></li>
+          <li><a href="diploma_process.html">Demande de Diplôme</a></li>
+
+        </ul>
+      </li>
+
+          <li class="dropdown"><a href="#"><span>Services</span> <i
+                class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              <li><a href="complaint_index.html">Faire une Réclamation</a></li>
+
+              <li class="dropdown"><a href="#"><span>Demander un acte academique</span> <i
+                    class="bi bi-chevron-down dropdown-indicator"></i></a>
+                <ul>
+                  <li><a href="transcript_ridirect.html" >Relevé de note</a></li>
+                  <li><a href="certificat_redirect.html" >Attestation de succès</a></li>
+                  <li><a href="diploma_ridirect.html">Diplôme</a></li>
+
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li><a href="contact.html">A propos</a></li>
+          <li><a href="contact.html">Contact</a></li>
+
+          
+          
+          <li><a href="contact.html"></a></li>
+
+
+          <div class="header-buttons" id="auth_button">
+            <a href="login.html" class="login-button">Connexion</a>
+            <a href="register.html" class="register-button">Inscription</a>
+          </div>
+
+        </ul>
+      </nav><!-- .navbar -->
+
+      <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Veuillez vous connecter</p>
+            <button id="login-button">Login</button>
+        </div>
+    </div>
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="hero">
+
+    <div class="info d-flex align-items-center">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-6 text-center">
+            <h2 data-aos="fade-down" style="margin-top: 30px;">Bienvenue <span></span></h2>
+            <p data-aos="fade-up">La FASEG à votre service autrement</p>
+            <!-- <p data-aos="fade-up"> </p> -->
+
+            <p data-aos="fade-up">Désormais, vos réclamations de note et demande d'actes academiques en toute simplicité et en toute facilité</p>
+
+            <!-- <div id="popup" class="popup">
+              <div class="popup-content">
+                <span class="close-popup" onclick="closePopup()">&times;</span>
+                <div id="popup-text"></div>
+              </div>
+            </div> -->
+
+            <a data-aos="fade-up" data-aos-delay="200" href="register.html" class="btn-get-started">Commencer</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+
+      <div class="carousel-item active" style="background-image: url(assets/img/hero-carousel/hero-carousel-1.jpg)">
+      </div>
+      <div class="carousel-item" style="background-image: url(assets/img/hero-carousel/hero-carousel-2.jpg)"></div>
+      <div class="carousel-item" style="background-image: url(assets/img/hero-carousel/hero-carousel-3.jpg)"></div>
+      <div class="carousel-item" style="background-image: url(assets/img/hero-carousel/hero-carousel-4.jpg)"></div>
+      <div class="carousel-item" style="background-image: url(assets/img/hero-carousel/hero-carousel-5.jpg)"></div>
+
+      <a class="carousel-control-prev" href="#hero-carousel" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+      </a>
+
+      <a class="carousel-control-next" href="#hero-carousel" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+      </a>
+
+    </div>
+
+  </section><!-- End Hero Section -->
+
+  <style>
+    .service-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .service-title {
+      flex: 0 0 calc(50% - 20px);
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      text-align: center;
+    }
+
+    .service-title i {
+      font-size: 34px;
+      margin-bottom: 10px;
+      font-weight: bolder;
+    }
+
+    @media (max-width: 395px) {
+      .service-container {
+        flex-direction: column;
+      }
+
+      .service-title {
+        flex: 0 0 calc(100% - 20px);
+      }
+    }
+  </style>
+
+  <!--Section services etudiants-->>
+  <div class="service-container">
+    <div class="service-title">
+      <i class="fas fa-graduation-cap fa-3x"></i>
+      <h4 class="title"><a href="login.html">Réclamation de note</a></h4>
+    </div>
+
+    <div class="service-title">
+      <i class="fas fa-file-alt fa-3x"></i>
+      <h4 class="title"><a href="login.html">Demande de relevé de note</a></h4>
+    </div>
+
+    <div class="service-title">
+      <i class="fas fa-certificate fa-3x"></i>
+      <h4 class="title"><a href="login.html">Demande d'attestation</a></h4>
+    </div>
+
+    <div class="service-title">
+      <i class="fas fa-award fa-3x"></i>
+      <h4 class="title"><a href="login.html">Demande de diplôme</a></h4>
+    </div>
+  </div>
+
+  <!--<div class="header-buttons" id="auth_button">
+    <a href="#" class="register-button" style="margin-top: 200px; margin-left: 40%;">Déconnexion</a>
+  </div>-->
+
+
+ <!-- ======= Footer ======= -->
+ <footer id="footer" class="footer">
+
+  <div class="footer-content position-relative">
+    <div class="container">
+      <div class="row">
+
+
+         
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>FASEG-UAC</h4>
+          <ul>
+            <li><a href="#"><strong>Phone:</strong> +229 97247851</a></li>
+            <li><a href="#"><strong>Email:</strong>ronaldoownpurpose@gmial.com</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Nos Services</h4>
+          <ul>
+            <li><a href="#">Réclamation de note</a></li>
+            <li><a href="#">Demande d'acte academique</a></li>
+
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Réseaux sociaux</h4>
+          <div class="social-links d-flex mt-3">
+            <a href="#" class="d-flex align-items-center justify-content-center"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="d-flex align-items-center justify-content-center"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="d-flex align-items-center justify-content-center"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="d-flex align-items-center justify-content-center"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Liens utiles</h4>
+          <ul>
+            <li><a href="contact.html">A propos</a></li>
+            <li><a href="#">Termes et confidentialités</a></li>
+
+          </ul>
+        </div>
+        <!-- End footer links column-->
+
+
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-legal text-center position-relative">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>faseg/uac</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+
+      </div>
+    </div>
+  </div>
+
+</footer>
+<!-- End Footer -->
+
+<a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i
+    class="bi bi-arrow-up-short"></i></a>
+
+<div id="preloader"></div>
+
+<!-- Vendor JS Files -->
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/aos/aos.js"></script>
+<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+<script src="assets/vendor/php-email-form/validate.js"></script>
+
+<!-- Template Main JS File -->
+<script src="assets/js/main.js"></script>
+
+
+  <!-- Code JavaScript pour la boîte de pop-up -->
+  <script>
+    // Fonction pour afficher la boîte de pop-up
+    function showPopup() {
+      var popup = document.getElementById('popup');
+      var popupText = document.getElementById('popup-text');
+      popup.style.display = 'block';
+
+      // Texte à afficher progressivement
+      var textToDisplay = "Plus besoin de vous déplacer pour soumettre vos dossiers de réclamation et de demande d'actes académique";
+      var currentIndex = 0;
+      var interval = setInterval(function() {
+        if (currentIndex <= textToDisplay.length) {
+          popupText.textContent = textToDisplay.substring(0, currentIndex);
+          currentIndex++;
+        } else {
+          clearInterval(interval);
+          setTimeout(closePopup, 3000); // Ferme la boîte après 3 secondes
+        }
+      }, 100); // Change le texte toutes les 100 millisecondes
+    }
+
+    // Fonction pour fermer la boîte de pop-up
+    function closePopup() {
+      var popup = document.getElementById('popup');
+      popup.style.display = 'none';
+    }
+
+    // Afficher la boîte de pop-up après le chargement de la page
+    window.addEventListener('load', showPopup);
+  </script>
+</body>
+
+</html>
